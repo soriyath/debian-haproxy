@@ -2,9 +2,10 @@ FROM soriyath/debian-swissfr
 MAINTAINER Sumi Straessle
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV HAPROXY_MAJOR 1.6
-ENV HAPROXY_VERSION 1.6.9
-ENV HAPROXY_MD5 c52eee40eb66f290d6f089c339b9d2b3
+
+ENV HAPROXY_MAJOR 1.7
+ENV HAPROXY_VERSION 1.7.2
+ENV HAPROXY_MD5 7330b36f3764ebe409e9305803dc30e2
 
 RUN apt-get update \
 	&& apt-get upgrade -y \
@@ -45,4 +46,4 @@ RUN apt-get clean \
 ADD haproxy.sv.conf /etc/supervisor/conf.d/haproxy.sv.conf
 
 EXPOSE 80 443
-CMD ["supervisord", "-c", "/etc/supervisor.conf"]
+CMD ["supervisord", "-c", "/etc/supervisor/supervisor.conf"]
